@@ -1,6 +1,19 @@
 from cmath import sqrt
-import math
 from fractions import Fraction
+
+def calculerDelta(a,b,c):
+    return b*b-4*a*c
+
+def displayEq(func):
+
+    """ Affiche l'intervalle sous un format normalisé
+
+    Args:
+        func (function)
+    """
+    x = ''.join(func)
+    print(x)
+
 
 def eq1(a, b):
 
@@ -28,19 +41,24 @@ def eq1(a, b):
                 result = ['{', str(-b/a), '}']
     return result
 
-def ineq(a, b):
+def ineq1(a, b):
 
-    """[summary]
+    """ Résoud l'inéquation ax + b > 0
 
     Args:
-        a ([type]): [description]
-        b ([type]): [description]
+        a (float)
+        b (float)
 
     Returns:
-        [type]: [description]
+        [list]: Liste contenant le résultat de l'inéquation
     """
     result = []
-    x = int(float(eq1(a, b)[1]))
+
+    if a==0: 
+        return eq1(a,b)
+    else:
+        x = int(float(eq1(a, b)[1]))
+
 
     if(isinstance(x, int)):
         if a > 0:
@@ -53,21 +71,20 @@ def ineq(a, b):
 
 def ineq1bis(a,b,symb):
     
-    """[summary]
-
+    """ Résoud les inéquations ax + b > 0 ou ax + b < 0
     Args:
-        a ([type]): [description]
-        b ([type]): [description]
-        symb ([type]): [description]
+        a (float): 
+        b (float): 
+        symb (string): 
 
     Returns:
-        [type]: [description]
+        [list]: Liste contenant le résultat de l'inéquation
     """
     result = []
 
     x = int(float(eq1(a, b)[1]))
     if symb == '>':
-        result = ineq(a,b)
+        result = ineq1(a,b)
     elif symb == '<':
         if(isinstance(x, int)):
             if a > 0:
@@ -80,8 +97,21 @@ def ineq1bis(a,b,symb):
         result = ['Mauvais symbole']
     return result
 
-def calculerDelta(a,b,c):
-    return b*b-4*a*c
+def ineq1bis2(a,b,symb):
+    """[summary]
+
+    Args:
+        a ([type]): [description]
+        b ([type]): [description]
+        symb ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
+    if symb == '>':
+        return ineq1(a,b)
+    elif symb == '<':
+        return ineq1(-a,-b)
 
 def eq2(a,b,c):
     """[summary]
@@ -98,42 +128,75 @@ def eq2(a,b,c):
 
     delta = calculerDelta(a,b,c)
     if(isinstance(delta, int)):
-        if(delta > 0):
-            x1 = ((-b) - sqrt(delta)) / (2*a)
-            x2 = ((-b) - sqrt(delta)) / (2*a)
-            result = ['{',str(x1),';',str(x2),'}']
-        elif(delta < 0):
-            result = ["Pas de solution réel"]
+        if a==0:
+            result = eq1(b,c)
         else:
-            x = -b/(2*a)
-            result = ['{',str(x),'}']
+            if(delta > 0):
+                x1 = ((-b) - sqrt(delta)) / (2*a)
+                x2 = ((-b) - sqrt(delta)) / (2*a)
+                result = ['{',str(x1),';',str(x2),'}']
+            elif(delta < 0):
+                result = ['Pas de solution réel']
+            else:
+                x = -b/(2*a)
+                result = ['{',str(x),'}']
     else:
         result = ['Le discriminant n\'est pas un entier']
     return result
 
 def ineq2(a,b,c):
+    """[summary]
+
+    Args:
+        a ([type]): [description]
+        b ([type]): [description]
+        c ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
     result = []
 
     delta = calculerDelta(a,b,c)
     if(isinstance(delta, int)):
-        if(delta > 0):
-            x1 = ((-b) - sqrt(delta)) / (2*a)
-            x2 = ((-b) - sqrt(delta)) / (2*a)
-            if a > 0:
-                result = ['R - [',str(x1),';',str(x2),']']
-            else:
-                result = ['']
-
-        elif(delta < 0):
-            if a > 0:
-                result = ["Ensemble R"]
-            else:
-                result = ["Pas de solution réel"]
+        if a==0:
+            result = ineq1(b, c)
         else:
-            x = -b/(2*a)
-            result = ['{',str(x),'}']
+            if(delta > 0):
+                if a > 0:
+                    x1 = ((-b) - sqrt(delta)) / (2*a)
+                    x2 = ((-b) + sqrt(delta)) / (2*a)
+                    result = ['R - [',str(x1),';',str(x2),']']
+                else:
+                    x1 = ((-b) + sqrt(delta)) / (2*a)
+                    x2 = ((-b) - sqrt(delta)) / (2*a)
+                    result = ['R - [',str(x1),';',str(x2),']']
+            elif(delta < 0):
+                if a > 0:
+                    result = ["Ensemble R"]
+                else:
+                    result = ["Pas de solution réel"]
+            else:
+                x = -b/(2*a)
+                result = ['{',str(x),'}']
     else:
         result = ['Le discriminant n\'est pas un entier']
     return result
 
+def ineq2bis(a,b,c,symb):
+    """[summary]
+
+    Args:
+        a ([type]): [description]
+        b ([type]): [description]
+        c ([type]): [description]
+        symb ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
+    if symb=='>':
+        return ineq2(a,b,c)
+    else:
+        return ineq2(-a,-b,-c)
     
