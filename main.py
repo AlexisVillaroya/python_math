@@ -1,13 +1,17 @@
 from toolbox import *
 
-# test eq1
-displayEq(eq1(3,4))
-displayEq(eq1(-3,4))
-displayEq(eq1(4,-4))
-displayEq(eq1(0,4))
+# test palindrome
 
-# test ineq1
+# print(isPalindromeIter("bonjour"))
+# print(isPalindromeIter("otto"))
 
+# print(isPalindromeRec("bonjour"))
+# print(isPalindromeRec("otto"))
 
+# print(isPalindrome("bonjour"))
+# print(isPalindrome("otto"))
 
-# test ineq1bis
+# array = ["ab", "cb", "ab", "ab", "ft", "yu"]
+# print(countOccur(array, "ab"))
+
+print(drawSuite(suite3(1)))
