@@ -14,4 +14,4 @@ from toolbox import *
 # array = ["ab", "cb", "ab", "ab", "ft", "yu"]
 # print(countOccur(array, "ab"))
 
-print(drawSuite(suite3(1)))
+drawSuite(genSuite(suite1, 1, 100, 1))

@@ -271,29 +271,25 @@ def countOccur(array, n):
 
 # Exercice 1 
 
-def suite1(x):
-    array = []
-    for i in range(100):
-        array.append(log1p(1/x))
-        x=x+1
-    return array
+def suite1(pX):
+    return log1p(1/pX)
 
-def suite2(x):
-    array = []
-    for i in range(100):
-        array.append((3*exp(-1))**x)
-        x=x+1
-    return array
+def suite2(pX):
+    return 3*exp(-1)**pX
 
-def suite3(x):
-    array = []
-    for i in range(100):
-        array.append(sqrt((x**2)+1) - sqrt(x))
-        x=x+1
-    return array
+def suite3(pX):
+    return sqrt((pX**2)+1) - sqrt(pX)
+
+def genSuite(pF, pDep, pArr, pPas):
+    list_x = []
+    list_y = []
+    for i in range(pDep, pArr+pPas, pPas):
+        list_x.append(i)
+        list_y.append(pF(i))
+    return list_x, list_y
 
 def drawSuite(array):
-    plt.plot(array)
+    plt.plot(array[0], array[1])
     plt.show()
 
 # Exercice 2
@@ -318,9 +314,14 @@ def ex3_iter(n):
         u=(u**2)//sqrt(exp(-u)+2)
     return u
 
-def ex3_rec(n):
-    if n==0:
-        return 1
+
+def genSuite2(pF, listVal, nVal):
+    while(len(listVal)<nVal):
+        nextVal = pF(listVal)
+        listVal.append(nextVal)
+    return listVal
+
+
 
 
 
