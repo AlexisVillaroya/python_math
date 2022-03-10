@@ -14,4 +14,6 @@ from toolbox import *
 # array = ["ab", "cb", "ab", "ab", "ft", "yu"]
 # print(countOccur(array, "ab"))
 
-drawSuite(genSuite(suite1, 1, 100, 1))
+#drawSuite(genSuite(suite1, 1, 100, 1))
+
+print(fibo_1(10))

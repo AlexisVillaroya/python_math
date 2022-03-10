@@ -321,6 +321,78 @@ def genSuite2(pF, listVal, nVal):
         listVal.append(nextVal)
     return listVal
 
+# Exercice 6
+
+def termValue(n):
+    Un = 0
+    S = 0
+    for k in range(n+1):
+        Un = 1/(3**k)
+        S += Un
+    return Un
+
+def trace(n):
+    x = range(n+1)
+    y = []
+    s = 0
+    for i in x:
+        s = s+(1/3)**i
+        y.append(s)
+    plt.plot(x, y, "go")
+    plt.show()
+    
+def minInt():
+    s = 0
+    k = 0
+    while abs(s-1.5)>=10**(-6):
+        k = k+1
+        s += (1/3)**k
+    return k
+
+# Exercice 7
+
+def termValue(n):
+    Un = 0
+    S = 0
+    k = 1
+    for k in range(n+1):
+        Un = 1/(k*(1+k))
+        S += Un
+    return Un
+
+def trace(n):
+    x = range(1, n+1)
+    y = []
+    for i in x:
+        s = s+1/(i*(1+i))
+        y.append(s)
+    plt.plot(x, y, "go")
+    plt.show()
+    
+def minInt():
+    s = 0
+    k = 0
+    while abs(s-1)>=10**(-6):
+        k = k+1
+        s += 1/(k*(1+k))
+    return k
+
+# Exercice 8
+
+def fibo_1(n):
+    n1 = 0
+    n2 = 1
+    list_fib = [n1,n2]
+    for i in range(2, n+1):
+        nextValue = n1 + n2
+        list_fib.append(nextValue)
+        n1 = n2
+        n2 = nextValue 
+    return list_fib 
+
+    
+
+
 
 
 
