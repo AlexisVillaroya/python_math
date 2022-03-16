@@ -3,8 +3,9 @@ from cmath import sqrt
 from fractions import Fraction
 import fractions
 from re import X
+from unittest import result
 import matplotlib.pyplot as plt
-from numpy import array
+from numpy import *
 
 def calculerDelta(a,b,c):
     return b*b-4*a*c
@@ -390,7 +391,89 @@ def fibo_1(n):
         n2 = nextValue 
     return list_fib 
 
-    
+def fibo_2(n):
+    n1 = 0
+    n2 = 1
+    for i in range(2, n+1):
+        nextValue = n1 + n2 
+        n1 = n2
+        n2 = nextValue
+        # TODO
+
+
+## Matrices ##
+
+# Exercice 1
+
+def is_triang_sup(mat):
+    ret = True
+    for i in range(1, len(mat)):
+        for j in range(0, i):
+            if(mat[i][j] != 0):
+                ret = False
+    return ret
+
+def is_triang_inf(mat):
+    n=len(mat)
+    ret = True
+    for i in range(0, n-1):
+        for j in range(i+1, n):
+            if(mat[i][j] != 0):
+                ret = False
+    return ret
+
+def is_diag(mat):
+    return is_triang_sup(mat) == is_triang_inf(mat)
+
+# Exercice 2
+
+def trace(mat):
+    Sum = 0 
+    if(is_diag(mat) != True):
+        print("Error")
+    else:
+        for i in range(len(mat)):
+            for j in range(len(mat)):
+                Sum += mat[i][j]
+    return Sum
+
+# Exercice 3
+
+def somme_mat(mat1, mat2):
+    if len(mat1) != len(mat2) or len(mat1[0]) != len(mat2[0]):
+        return "Error"
+    else:
+        S = mat1.copy()
+        for i in range(len(mat1)):
+            for j in range(len(mat1[0])):
+                S[i][j] = mat1[i][j] + mat2[i][j]
+        return S
+
+def prod_mat(mat1, mat2):
+    ret = []
+    # Fill the matrice with null value
+    for i in range(len(mat1)):
+        row = []
+        for j in range(len(mat2[0])):
+            row.append(0)
+        ret.append(row)
+
+    # Multiply matrices
+    for i in range(len(mat1)):
+        for j in range(len(mat2[0])):
+            for k in range(len(mat2)):
+                ret[i][j] = mat1[i][k] * mat2[k][j]
+    return ret
+
+
+def puiss_mat(A, k):
+    for i in range(0, len(A)):
+        for j in range(0, len(A[i])):
+            A[i][j] = k * A[i][j]
+    return A
+
+
+
 
 
 
