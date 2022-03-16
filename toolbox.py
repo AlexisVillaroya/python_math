@@ -440,14 +440,15 @@ def trace(mat):
 # Exercice 3
 
 def somme_mat(mat1, mat2):
-    if len(mat1) != len(mat2) or len(mat1[0]) != len(mat2[0]):
+    ret = []
+    if(len(mat1) != len(mat2) or len(mat1[0]) != len(mat2[0])):
         return "Error"
     else:
-        S = mat1.copy()
+        ret = mat1.copy()
         for i in range(len(mat1)):
             for j in range(len(mat1[0])):
-                S[i][j] = mat1[i][j] + mat2[i][j]
-        return S
+                ret[i][j] = mat1[i][j] + mat2[i][j]
+    return ret
 
 def prod_mat(mat1, mat2):
     ret = []
@@ -459,10 +460,13 @@ def prod_mat(mat1, mat2):
         ret.append(row)
 
     # Multiply matrices
-    for i in range(len(mat1)):
-        for j in range(len(mat2[0])):
-            for k in range(len(mat2)):
-                ret[i][j] = mat1[i][k] * mat2[k][j]
+    if(len(mat1[0]) != len(mat2)):
+        ret = "Error"
+    else:
+        for i in range(len(mat1)):
+            for j in range(len(mat2[0])):
+                for k in range(len(mat2)):
+                    ret[i][j] = mat1[i][k] * mat2[k][j]
     return ret
 
 
