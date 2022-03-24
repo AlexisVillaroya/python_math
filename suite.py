@@ -56,6 +56,25 @@ def genSuite2(pF, listVal, nVal):
         listVal.append(nextVal)
     return listVal
 
+# Exercice 5
+
+def suite5_iter(n):
+    u=2
+    v=-1
+    for i in range(1,n+1):
+        temp=u-2*v
+        v=u+3*v
+        u=temp
+    return u,v
+
+def suite5_rec(n):
+    if n==0:
+        return [2,-1]
+    else:
+        u=suite5_rec(n-1)[0]-2*suite5_rec(n-1)[1]
+        v=suite5_rec(n-1)[0]+3*suite5_rec(n-1)[1]
+    return [u,v]
+
 # Exercice 6
 
 def termValue(n):

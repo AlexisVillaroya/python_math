@@ -1,6 +1,5 @@
 from math import *
 from cmath import sqrt
-from numpy import *
 
 def calculerDelta(a,b,c):
     return b*b-4*a*c
@@ -19,10 +18,6 @@ def displayEq(func):
 def eq1(a, b):
 
     """ Résoud l'équation ax + b = 0
-
-    Args:
-        a (float)
-        b (float)
 
     Returns:
         [list]: Liste contenant le résultat de l'équation
@@ -45,10 +40,6 @@ def eq1(a, b):
 def ineq1(a, b):
 
     """ Résoud l'inéquation ax + b > 0
-
-    Args:
-        a (float)
-        b (float)
 
     Returns:
         [list]: Liste contenant le résultat de l'inéquation
@@ -73,10 +64,6 @@ def ineq1(a, b):
 def ineq1bis(a,b,symb):
     
     """ Résoud les inéquations ax + b > 0 ou ax + b < 0
-    Args:
-        a (float): 
-        b (float): 
-        symb (string): 
 
     Returns:
         [list]: Liste contenant le résultat de l'inéquation
@@ -99,32 +86,12 @@ def ineq1bis(a,b,symb):
     return result
 
 def ineq1bis2(a,b,symb):
-    """[summary]
-
-    Args:
-        a ([type]): [description]
-        b ([type]): [description]
-        symb ([type]): [description]
-
-    Returns:
-        [type]: [description]
-    """
     if symb == '>':
         return ineq1(a,b)
     elif symb == '<':
         return ineq1(-a,-b)
 
 def eq2(a,b,c):
-    """[summary]
-
-    Args:
-        a ([type]): [description]
-        b ([type]): [description]
-        c ([type]): [description]
-
-    Returns:
-        [type]: [description]
-    """
     result = []
 
     delta = calculerDelta(a,b,c)
@@ -146,16 +113,6 @@ def eq2(a,b,c):
     return result
 
 def ineq2(a,b,c):
-    """[summary]
-
-    Args:
-        a ([type]): [description]
-        b ([type]): [description]
-        c ([type]): [description]
-
-    Returns:
-        [type]: [description]
-    """
     result = []
 
     delta = calculerDelta(a,b,c)
@@ -185,17 +142,6 @@ def ineq2(a,b,c):
     return result
 
 def ineq2bis(a,b,c,symb):
-    """[summary]
-
-    Args:
-        a ([type]): [description]
-        b ([type]): [description]
-        c ([type]): [description]
-        symb ([type]): [description]
-
-    Returns:
-        [type]: [description]
-    """
     if symb=='>':
         return ineq2(a,b,c)
     else:
@@ -203,13 +149,10 @@ def ineq2bis(a,b,c,symb):
 
 
 
-""" Si la chaine de caractère est un palindrome renvoi vrai
-
-    Args:
-        array ([type]): [description]
+""" Si la chaine de caractère est un palindrome renvoi True
 
     Returns:
-        [type]: [description]
+        [bool]: True or False
 """
 
 def isPalindromeIter(array):
@@ -221,7 +164,7 @@ def isPalindromeIter(array):
             else:
                 result = False
     else:
-        print("Error : wrong type")
+        result = False
 
     return result
 
@@ -237,7 +180,7 @@ def isPalindromeRec(array):
             else:
                 result = False
     else:
-        print("Error : wrong type")
+        result = False
     return result 
 
 def isPalindrome(array):
@@ -245,12 +188,9 @@ def isPalindrome(array):
 
 def countOccur(array, n):
     """ Compte le nombre d'occurance dans une chaine 
-    Args:
-        array ([type]): [description]
-        n ([type]): [description]
 
     Returns:
-        [type]: [description]
+        [list]: [description]
     """
     result = []
     if len(array) == 0:

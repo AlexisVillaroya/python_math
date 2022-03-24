@@ -1,6 +1,5 @@
 from math import *
 from cmath import sqrt
-from numpy import *
 
 def copy_mat(mat):
     if(isinstance(mat, list)):
@@ -71,7 +70,7 @@ def is_diag(mat):
 def trace_mat(mat):
     Sum = 0 
     if(is_diag(mat) != True):
-        raise ValueError("It's not a diagonal matrice")
+        raise ValueError("It's not a diagonal matrix")
     else:
         for i in range(len(mat)):
             for j in range(len(mat)):
@@ -83,7 +82,7 @@ def trace_mat(mat):
 def somme_mat(mat1, mat2):
     ret = []
     if(len(mat1) != len(mat2) or len(mat1[0]) != len(mat2[0])):
-        raise ValueError("The matrices are not the same size")
+        raise ValueError("The matrix are not the same size")
     else:
         ret = copy_mat(mat1)
         for i in range(len(mat1)):

@@ -34,4 +34,11 @@ mat = [[1,-1,2],[2,2,-2],[-1,1,2]]
 
 # print(is_pseudomagique(mat))
 # print(second_deg(0, 12, 3))
-print(somme_diag(mat, 0))
+# print(somme_diag(mat, 0))
+
+
+# print(suite1(10))
+# print(suite_iter(4))
+# print(suite_iter(4))
+print(depassement(341))
+#draw_rep(20)

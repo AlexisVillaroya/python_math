@@ -1,10 +1,8 @@
 from math import *
 from cmath import sqrt
 from fractions import Fraction
+from unittest import suite
 import matplotlib.pyplot as plt
-from numpy import *
-
-from matrix import somme_line
 
 def calculerDelta(a,b,c):
     return b*b-4*a*c
@@ -63,6 +61,10 @@ def changvar2(a, b, c):
         ret2.append(0)
     return ret2
 
+# .3
+
+#TODO
+
 
 # Exercice 2
 
@@ -76,7 +78,7 @@ def somme_lig(mat, ligne):
 
 # .2
 
-def somme_row(mat, row):
+def somme_col(mat, row):
     if(isinstance(mat, list)):
         total = 0
         for line in mat:
@@ -91,13 +93,23 @@ def is_pseudomagique(mat):
     ret = True
     if(isinstance(mat, list)):
         for i in range(len(mat)):
-            if(somme_lig(mat, i) != 2 and somme_row(mat, i) != 2):
+            if(somme_lig(mat, i) != 2 and somme_col(mat, i) != 2):
                 ret = False
     return ret    
 
 # .4
 
 def somme_diag(mat, nBool):
+    """[summary] Effectue la somme de la diagonale de la matrice
+
+    Args:
+        mat ([list]): matrice 
+        nBool ([bool]): nBool == 1 (diagonale [0][0] à [2][2])
+                        nBool == 0 (diagonale [0][2] à [2][0])
+
+    Returns:
+        [int]: Somme de la diagonale 
+    """
     ret = 0
     n = len(mat)
     if(nBool == 1):
@@ -115,5 +127,51 @@ def is_magique(mat):
         if(somme_diag(mat, 0) == 2 and somme_diag(mat, 1) == 2):
             ret = True
     return ret
+
+# .5 
+
+#TODO
+
+# Exercice 3
+
+def suite1(n):
+    u = 2
+    ret = [0] * n
+    ret[0] = u
+    for i in range(1, n):
+        ret[i] = u = (u*u) + u - 2
+    return ret
+
+def draw_rep(n):
+    print([k for k in range(n)])
+    plt.plot([k for k in range(n)], suite1(n), 'bo')
+    plt.show()
+
+def suite_iter(n):
+    u = 2
+    for i in range(1, n):
+        u = (u*u) + u -2
+    return u
+
+def suite_rec(n):
+    if n == 0:
+        return 2
+    else:
+        u = suite_rec(n - 1)
+        return (u*u) + u -2
+
+def depassement(m):
+    ret = 0
+    n = 0
+    u = 2
+    if(isinstance(m, int) or m < 0):
+        while(m > u):
+            n+=1
+            u = (u*u) + u - 2 
+        ret = n
+    else:
+        ret = None
+    return ret    
+
 
 
