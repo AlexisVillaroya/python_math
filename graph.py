@@ -1,51 +1,38 @@
-# ajouterSommet
-# ajouterChemin
-# supSommet
-# supChemin
-# genererGraph
+def addKey(pKey, pKeys):
+    return pKeys.append(pKey)
 
-def ajouterSommet(dict, nom):
-    size = len(dict)
-    if(size == 0):
-        dict[nom] = []
-    else:
-        dict[nom] = [0] * len(dict)
+def addVertex(pGraph, pKey, pKeys):
+    if(isinstance(pKeys, list) and isinstance(pGraph, dict)):
+        if(pKey not in pKeys):
+            pGraph[pKey] = []
+            addKey(pKey, pKeys)
+    return pGraph
 
-def ajouterChemin(dict, sommet, sommetVoisin):
-    dict[sommet][sommetVoisin] = 1
+def addPath(pGraph, pPath1, pPath2, pKeys):
+    if(isinstance(pKeys, list) and isinstance(pGraph, dict)):
+        if(pPath1 in pKeys):
+            if(pPath2 not in pGraph[pPath1]):
+                pGraph[pPath1].append(pPath2)
+    return pGraph
 
-def supSommet(dict, nom):
-    del dict[nom]
+def deleteVertex(pGraph, pKey, pKeys):
+    if(isinstance(pKeys, list) and isinstance(pGraph, dict)):
+        if(pKey in pKeys):
+            del pGraph[pKey]
+    return pGraph
 
-def supChemin(dict, sommet, sommetVoisin):
-    dict[sommet][sommetVoisin] = 0
+def deletePath(pGraph, pPath1, pPath2, pKeys):
+    if(isinstance(pKeys, list) and isinstance(pGraph, dict)):
+        if((pPath1 in pKeys) and (pPath1 in pKeys[pPath2])):
+            pGraph[pPath1].append(pPath1)
+    return pGraph
 
-def generateMatAdj(mat):
-    sizeMat = len(mat)
-    dict = {}
-    for i in range(len(mat)):
-        dict[i] = [0] * len(mat)
-    for i in range(sizeMat):
-        ajouterSommet(dict, i)
-        for j in range(len(mat[i])):
-            dict[i][j] = 1
-    return dict 
+def generateMatrix(pGraph):
+    valRen = [0] * (len(pGraph)**2)
+    if(isinstance(pGraph, dict)):
+        for key, listPath in pGraph.items():
+            for val in listPath:
+                valRen[key] = 1
+    return valRen 
 
-def genererGraph():
-    print('x')
 
-# Exercice 1
-
-def degre(dict):
-    num = 0
-    size = len(dict)
-    for i in range(size):
-        if(sum(dict[i]) > num):
-            num = sum(dict[i])
-    return num
-
-# Exercice 2
-
-def sommetAccess(dict, sommet):
-    liste = []
-    dict[sommet]

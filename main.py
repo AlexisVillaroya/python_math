@@ -74,4 +74,25 @@ mat = [[1,2],[3],[1,3],[0]]
 # # degre
 # print(degre(graphe1))
 
-print(generateMatAdj(mat))
+pGraph = {}
+pKeys = []
+addVertex(pGraph, 0, pKeys)
+addVertex(pGraph, 1, pKeys)
+addVertex(pGraph, 2, pKeys)
+addVertex(pGraph, 3, pKeys)
+addVertex(pGraph, 4, pKeys)
+
+
+addPath(pGraph, 0, 1, pKeys)
+addPath(pGraph, 0, 2, pKeys)
+addPath(pGraph, 0, 3, pKeys)
+addPath(pGraph, 1, 2, pKeys)
+addPath(pGraph, 1, 3, pKeys)
+addPath(pGraph, 2, 3, pKeys)
+addPath(pGraph, 3, 3, pKeys)
+addPath(pGraph, 4, 3, pKeys)
+
+print(generateMatrix(pGraph))
+
+print(pGraph)
+
