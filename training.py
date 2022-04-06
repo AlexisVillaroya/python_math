@@ -119,7 +119,7 @@ def somme_diag(mat, nBool):
     else:
         ret = None
     return ret
-
+    
 
 def is_magique(mat):
     ret = False
@@ -130,7 +130,7 @@ def is_magique(mat):
 
 # .5 
 
-#TODO
+
 
 # Exercice 3
 

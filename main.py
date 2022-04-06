@@ -1,5 +1,8 @@
 #from toolbox import *
+from func import *
 from training import *
+import time
+from graph import *
 
 # test palindrome
 
@@ -30,7 +33,7 @@ from training import *
 # print(trace(mat5))
 # display_matrice(copy_mat(mat1))
 
-mat = [[1,-1,2],[2,2,-2],[-1,1,2]]
+# mat = [[1,-1,2],[2,2,-2],[-1,1,2]]
 
 # print(is_pseudomagique(mat))
 # print(second_deg(0, 12, 3))
@@ -40,5 +43,35 @@ mat = [[1,-1,2],[2,2,-2],[-1,1,2]]
 # print(suite1(10))
 # print(suite_iter(4))
 # print(suite_iter(4))
-print(depassement(341))
-#draw_rep(20)
+# print(depassement(341))
+# draw_rep(20)
+
+### TEST Fonctions
+
+# tps1 = time.time()
+# print("10 chiffres significatifs : ", balayage(f1,10,0.0001))
+# tps2 = time.time()
+# intervalletemps = tps2 - tps1
+
+# print("Deuxième solution : ",balayage(f1,-0.5,0.0001))
+# print("Troisième solution : ",balayage(f1,1,0.0001))
+
+# print("Première solution : ", dichotomie(f1,-2,-1,0.0001))
+# print("Deuxième solution : ",dichotomie(f1,-1,1,0.0001))
+# print("Troisième solution : ",dichotomie(f1,1,2,0.0001))
+
+### TEST Graphes
+
+graphe1 = {0 : [0, 1, 0, 1], 1 : [0, 0, 1, 1], 2 : [1, 0, 1, 1], 3 : [1, 1, 1, 0]}
+graphe2 = {}
+
+mat = [[1,2],[3],[1,3],[0]]
+
+# # Ajouter un sommet 
+# print(ajouterSommet(graphe1, 4))
+# # Ajouter un chemin
+# print(ajouterChemin(graphe1, 4, 2))
+# # degre
+# print(degre(graphe1))
+
+print(generateMatAdj(mat))
