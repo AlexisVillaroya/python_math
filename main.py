@@ -89,6 +89,7 @@ addPath(pGraph, 0, 1, pKeys)
 addPath(pGraph, 0, 2, pKeys)
 addPath(pGraph, 0, 3, pKeys)
 addPath(pGraph, 1, 2, pKeys)
+addPath(pGraph, 1, 0, pKeys)
 addPath(pGraph, 1, 3, pKeys)
 addPath(pGraph, 2, 0, pKeys)
 addPath(pGraph, 3, 0, pKeys)
@@ -96,7 +97,7 @@ addPath(pGraph, 4, 0, pKeys)
 
 print(pGraph)
 
-deleteVertex(pGraph, 0, pKeys)
+deletePath(pGraph, 0, 1, pKeys)
 
 print(pGraph)
 

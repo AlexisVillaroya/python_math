@@ -67,8 +67,8 @@ def deletePath(pGraph, pPath1, pPath2, pKeys):
 
     Args:
         pGraph (dict): graphe où l'on supprime le chemin
-        pPath1 (_type_): sommet où l'on supprime le sommet adjacent
-        pPath2 (_type_): sommet à supprimer
+        pPath1 (_type_): sommet 1 où l'on supprime le chemin
+        pPath2 (_type_): sommet 2 où l'on supprime le chemin
         pKeys (list): liste des sommets
 
     Returns:
@@ -77,6 +77,8 @@ def deletePath(pGraph, pPath1, pPath2, pKeys):
     if(isinstance(pKeys, list) and isinstance(pGraph, dict)):
         if(pPath2 in pGraph[pPath1]):
             pGraph[pPath1].remove(pPath2)
+            if(pPath1 in pGraph[pPath2]):
+                pGraph[pPath2].remove(pPath1)
     return pGraph
 
 def generateMatrix(pGraph):
@@ -90,8 +92,6 @@ def generateMatrix(pGraph):
 
 def existPath(pMat, pPath1, pPath2):
     n = len(pMat)
-    
-
     
 
 def degre(pGraph):
