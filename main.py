@@ -1,4 +1,5 @@
 #from toolbox import *
+from site import execsitecustomize
 from func import *
 from training import *
 import time
@@ -76,6 +77,7 @@ mat = [[1,2],[3],[1,3],[0]]
 
 pGraph = {}
 pKeys = []
+
 addVertex(pGraph, 0, pKeys)
 addVertex(pGraph, 1, pKeys)
 addVertex(pGraph, 2, pKeys)
@@ -88,11 +90,20 @@ addPath(pGraph, 0, 2, pKeys)
 addPath(pGraph, 0, 3, pKeys)
 addPath(pGraph, 1, 2, pKeys)
 addPath(pGraph, 1, 3, pKeys)
-addPath(pGraph, 2, 3, pKeys)
-addPath(pGraph, 3, 3, pKeys)
-addPath(pGraph, 4, 3, pKeys)
-
-print(generateMatrix(pGraph))
+addPath(pGraph, 2, 0, pKeys)
+addPath(pGraph, 3, 0, pKeys)
+addPath(pGraph, 4, 0, pKeys)
 
 print(pGraph)
+
+deleteVertex(pGraph, 0, pKeys)
+
+print(pGraph)
+
+print(degre(pGraph))
+print(generateMatrix(pGraph))
+#existPath(pGraph, 0, 1)
+print(listAccessVertex(pGraph, 1))
+
+
 
