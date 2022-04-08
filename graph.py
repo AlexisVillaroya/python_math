@@ -41,6 +41,8 @@ def addPath(pGraph, pPath1, pPath2, pKeys):
         if(pPath1 in pKeys):
             if(pPath2 not in pGraph[pPath1]):
                 pGraph[pPath1].append(pPath2)
+                if(pPath1 not in pGraph[pPath2]):
+                    pGraph[pPath2].append(pPath1)
     return pGraph
 
 def deleteVertex(pGraph, pKey, pKeys):
@@ -90,10 +92,24 @@ def generateMatrix(pGraph):
                 valRen[key][val] = 1
     return valRen 
 
-def existPath(pMat, pPath1, pPath2):
-    n = len(pMat)
-    
+def existPath(pGraph, pPath1, pPath2):
+    """ Détermine si un chemin existe
 
+    Args:
+        pGraph (dict): graphe à traiter
+        pPath1 (_type_): sommet 1
+        pPath2 (_type_): sommet 2
+
+    Returns:
+        bool: True si le chemin existe, False sinon
+    """
+    valRen = False
+    if(isinstance(pGraph, dict)):
+        if(pPath1 in pGraph):
+            if(pPath2 in pGraph[pPath1]):
+                valRen = True
+    return valRen
+    
 def degre(pGraph):
     """ Détermine le degre du graphe
 
@@ -112,10 +128,10 @@ def degre(pGraph):
     return valRen
 
 def listAccessVertex(pGraph, pKey):
-    """ Liste des sommets accessible depuis un autre sommet (pKey)
+    """ Détermine la liste des sommets accessibles depuis un sommet
 
     Args:
-        pGraph (dicy): graphe à traiter
+        pGraph (dict): graphe à traiter
         pKey (_type_): sommet à traiter
 
     Returns:
@@ -123,7 +139,65 @@ def listAccessVertex(pGraph, pKey):
     """
     valRen = []
     if(isinstance(pGraph, dict)):
-        valRen = pGraph[pKey]
+        for key, listPath in pGraph.items():
+            for val in listPath:
+                if(val not in valRen):
+                    valRen.append(val)
     return valRen
 
-#def isConnected(pGraph):
+def isConnected(pGraph):
+    """ Détermine si le graphe est connexe
+
+    Args:
+        pGraph (dict): graphe à traiter
+
+    Returns:
+        bool: True si le graphe est connexe, False sinon
+    """
+    valRen = False
+    if(isinstance(pGraph, dict)):
+        if(len(pGraph)>0):
+            valRen = True
+            for key, listPath in pGraph.items():
+                for val in listPath:
+                    if(val not in listAccessVertex(pGraph, key)):
+                        valRen = False
+    return valRen
+
+def floyd(A):
+    """ Algorithme de Floyd-Warshall
+
+    Args:
+        A (matrix): matrice du graphe
+
+    Returns:
+        matrix: matrice des distances
+    """
+    n = len(A)
+    D = A.copy()
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                D[i][j] = min(D[i][j], D[i][k] + D[k][j])
+    return D
+
+
+def isTree(pGraph):
+    """ Détermine si le graphe est un arbre
+
+    Args:
+        pGraph (dict): graphe à traiter
+
+    Returns:
+        bool: True si le graphe est un arbre, False sinon
+    """
+    valRen = False
+    if(isinstance(pGraph, dict)):
+        if(len(pGraph)>0):
+            valRen = True
+            for key, listPath in pGraph.items():
+                for val in listPath:
+                    if(val not in listAccessVertex(pGraph, key)):
+                        valRen = False
+    return valRen
+

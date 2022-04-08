@@ -97,14 +97,12 @@ addPath(pGraph, 4, 0, pKeys)
 
 print(pGraph)
 
-deletePath(pGraph, 0, 1, pKeys)
+#deletePath(pGraph, 0, 1, pKeys)
 
 print(pGraph)
 
 print(degre(pGraph))
 print(generateMatrix(pGraph))
-#existPath(pGraph, 0, 1)
+print(existPath(pGraph, 0, 1))
 print(listAccessVertex(pGraph, 1))
-
-
 
