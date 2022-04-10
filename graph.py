@@ -127,7 +127,7 @@ def degre(pGraph):
                     valRen = val
     return valRen
 
-def listAccessVertex(pGraph, pKey):
+def listAccessVertex(pGraph, pKey, sizeGraph):
     """ Détermine la liste des sommets accessibles depuis un sommet
 
     Args:
@@ -138,12 +138,23 @@ def listAccessVertex(pGraph, pKey):
         list: liste des sommets accessibles
     """
     valRen = []
-    if(isinstance(pGraph, dict)):
-        for key, listPath in pGraph.items():
-            for val in listPath:
-                if(val not in valRen):
-                    valRen.append(val)
-    return valRen
+    keys = [n for n in pGraph.keys()]
+    if sizeGraph<0:
+        return set(valRen)
+    else:
+        if(isinstance(pGraph, dict)):
+            for i in pGraph.keys():
+                # print('i', i)
+                # print('pKey', pKey)
+                # print(existPath(pGraph, i, pKey))
+                # print('')
+                if(pKey != i and existPath(pGraph, i, pKey)):
+                    valRen.append(i)
+                    val = i 
+                else:
+                    val = []
+                valRen+=listAccessVertex(pGraph, val, sizeGraph-1)   
+        return set(valRen)
 
 def isConnected(pGraph):
     """ Détermine si le graphe est connexe
@@ -154,14 +165,13 @@ def isConnected(pGraph):
     Returns:
         bool: True si le graphe est connexe, False sinon
     """
-    valRen = False
+    valRen = True
     if(isinstance(pGraph, dict)):
-        if(len(pGraph)>0):
-            valRen = True
-            for key, listPath in pGraph.items():
-                for val in listPath:
-                    if(val not in listAccessVertex(pGraph, key)):
-                        valRen = False
+        for key in pGraph.keys():
+            taille = len(listAccessVertex(pGraph, key, len(pGraph)))
+            print('taille', taille)
+            if taille < len(pGraph):
+                valRen = False
     return valRen
 
 def floyd(A):
@@ -181,6 +191,27 @@ def floyd(A):
                 D[i][j] = min(D[i][j], D[i][k] + D[k][j])
     return D
 
+def access(liste,i):
+    nb_etapes=[[i]]
+    dejavu=[i]
+    for k in range(1,len(liste)):
+        new=[]
+        for val in nb_etapes[k-1]:
+            for j in liste[val]:
+                if j not in dejavu:
+                    dejavu.append(j)
+                    new.append(j)
+        nb_etapes.append(new)
+    return [nb_etapes,dejavu]
+
+
+def is_connexe(liste):
+    valRen=True
+    for i in range(len(liste)):
+        nb_points_acc=len(access(liste,i)[1])
+        if nb_points_acc<len(liste):
+            valRen=False
+    return valRen
 
 def isTree(pGraph):
     """ Détermine si le graphe est un arbre

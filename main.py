@@ -83,26 +83,28 @@ addVertex(pGraph, 1, pKeys)
 addVertex(pGraph, 2, pKeys)
 addVertex(pGraph, 3, pKeys)
 addVertex(pGraph, 4, pKeys)
+addVertex(pGraph, 5, pKeys)
 
 
+addPath(pGraph, 0, 4, pKeys)
 addPath(pGraph, 0, 1, pKeys)
-addPath(pGraph, 0, 2, pKeys)
-addPath(pGraph, 0, 3, pKeys)
-addPath(pGraph, 1, 2, pKeys)
-addPath(pGraph, 1, 0, pKeys)
-addPath(pGraph, 1, 3, pKeys)
-addPath(pGraph, 2, 0, pKeys)
-addPath(pGraph, 3, 0, pKeys)
-addPath(pGraph, 4, 0, pKeys)
+addPath(pGraph, 2, 4, pKeys)
+addPath(pGraph, 3, 4, pKeys)
+addPath(pGraph, 1, 5, pKeys)
+
+
+
 
 print(pGraph)
-
+seen = []
+print(print(listAccessVertex(pGraph, 0, len(pGraph))))
+print(isConnected(pGraph))
 #deletePath(pGraph, 0, 1, pKeys)
 
-print(pGraph)
+# print(pGraph)
 
-print(degre(pGraph))
-print(generateMatrix(pGraph))
-print(existPath(pGraph, 0, 1))
-print(listAccessVertex(pGraph, 1))
+# print(degre(pGraph))
+# print(generateMatrix(pGraph))
+# print(existPath(pGraph, 0, 1))
+# print(listAccessVertex(pGraph, 1))
 

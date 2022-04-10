@@ -10,7 +10,7 @@ def randomSix():
         if(pTruque == 1):
             valRen = 6
         else:
-            valRen = random.randint(0,5)
+            valRen = random.randint(1,5)
     else:
         valRen = random.randint(1,6)
         
@@ -98,6 +98,5 @@ def frequenceApparition(liste):
     return freq
 
 # Exercice 7
-
 
 
