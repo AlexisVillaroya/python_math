@@ -99,4 +99,8 @@ def frequenceApparition(liste):
 
 # Exercice 7
 
-
+def stopSix():
+    iter = 0
+    while random.randint(1,6) != 6:
+        iter += 1
+    return iter

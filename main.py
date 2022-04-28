@@ -63,42 +63,47 @@ from graph import *
 
 ### TEST Graphes
 
-graphe1 = {0 : [0, 1, 0, 1], 1 : [0, 0, 1, 1], 2 : [1, 0, 1, 1], 3 : [1, 1, 1, 0]}
-graphe2 = {}
+# graphe1 = {0 : [0, 1, 0, 1], 1 : [0, 0, 1, 1], 2 : [1, 0, 1, 1], 3 : [1, 1, 1, 0]}
+# graphe2 = {}
 
-mat = [[1,2],[3],[1,3],[0]]
+# mat = [[1,2],[3],[1,3],[0]]
 
-# # Ajouter un sommet 
-# print(ajouterSommet(graphe1, 4))
-# # Ajouter un chemin
-# print(ajouterChemin(graphe1, 4, 2))
-# # degre
-# print(degre(graphe1))
+# # # Ajouter un sommet 
+# # print(ajouterSommet(graphe1, 4))
+# # # Ajouter un chemin
+# # print(ajouterChemin(graphe1, 4, 2))
+# # # degre
+# # print(degre(graphe1))
 
-pGraph = {}
-pKeys = []
+# pGraph = {}
+# pKeys = []
 
-addVertex(pGraph, 0, pKeys)
-addVertex(pGraph, 1, pKeys)
-addVertex(pGraph, 2, pKeys)
-addVertex(pGraph, 3, pKeys)
-addVertex(pGraph, 4, pKeys)
-addVertex(pGraph, 5, pKeys)
-
-
-addPath(pGraph, 0, 4, pKeys)
-addPath(pGraph, 0, 1, pKeys)
-addPath(pGraph, 2, 4, pKeys)
-addPath(pGraph, 3, 4, pKeys)
-addPath(pGraph, 1, 5, pKeys)
+# addVertex(pGraph, 0, pKeys)
+# addVertex(pGraph, 1, pKeys)
+# addVertex(pGraph, 2, pKeys)
+# addVertex(pGraph, 3, pKeys)
+# addVertex(pGraph, 4, pKeys)
+# addVertex(pGraph, 5, pKeys)
+# addVertex(pGraph, 6, pKeys)
 
 
 
+# addPath(pGraph, 0, 1, pKeys)
+# addPath(pGraph, 1, 2, pKeys)
+# addPath(pGraph, 2, 3, pKeys)
+# addPath(pGraph, 3, 4, pKeys)
+# addPath(pGraph, 4, 5, pKeys)
+# addPath(pGraph, 5, 6, pKeys)
 
-print(pGraph)
-seen = []
-print(print(listAccessVertex(pGraph, 0, len(pGraph))))
-print(isConnected(pGraph))
+
+
+
+
+# print(pGraph)
+# seen = []
+# print(listAccessVertex(pGraph, 1, len(pGraph)))
+# print(isConnected(pGraph))
+# print(generateMatrix(pGraph))
 #deletePath(pGraph, 0, 1, pKeys)
 
 # print(pGraph)
@@ -107,4 +112,7 @@ print(isConnected(pGraph))
 # print(generateMatrix(pGraph))
 # print(existPath(pGraph, 0, 1))
 # print(listAccessVertex(pGraph, 1))
+
+### INTEGRAL ###
+
 

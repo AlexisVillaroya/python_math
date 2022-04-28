@@ -138,23 +138,18 @@ def listAccessVertex(pGraph, pKey, sizeGraph):
         list: liste des sommets accessibles
     """
     valRen = []
-    keys = [n for n in pGraph.keys()]
+    val = []
     if sizeGraph<0:
-        return set(valRen)
+        return list(set(valRen))
     else:
         if(isinstance(pGraph, dict)):
             for i in pGraph.keys():
-                # print('i', i)
-                # print('pKey', pKey)
-                # print(existPath(pGraph, i, pKey))
-                # print('')
                 if(pKey != i and existPath(pGraph, i, pKey)):
                     valRen.append(i)
-                    val = i 
-                else:
-                    val = []
-                valRen+=listAccessVertex(pGraph, val, sizeGraph-1)   
-        return set(valRen)
+                    if(val == []):
+                        val = i
+            valRen+=listAccessVertex(pGraph, val, sizeGraph-1)   
+        return list(set(valRen))
 
 def isConnected(pGraph):
     """ Détermine si le graphe est connexe
@@ -169,7 +164,6 @@ def isConnected(pGraph):
     if(isinstance(pGraph, dict)):
         for key in pGraph.keys():
             taille = len(listAccessVertex(pGraph, key, len(pGraph)))
-            print('taille', taille)
             if taille < len(pGraph):
                 valRen = False
     return valRen
